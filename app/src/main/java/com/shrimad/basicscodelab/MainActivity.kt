@@ -22,9 +22,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BasicsCodelabTheme {
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    MyApp(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -38,8 +37,18 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Surface(color = MaterialTheme.colorScheme.primary) {
         Text(
             text = "Hello $name!",
-        modifier = modifier.padding(24.dp)
+            modifier = modifier.padding(24.dp)
         )
+    }
+}
+
+@Composable
+fun MyApp(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Greeting("Android")
     }
 }
 
@@ -47,6 +56,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     BasicsCodelabTheme {
-        Greeting("Android")
+        MyApp()
     }
 }
